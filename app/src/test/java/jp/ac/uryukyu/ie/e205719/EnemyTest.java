@@ -6,15 +6,21 @@ package jp.ac.uryukyu.ie.e205719;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+import com.apple.laf.AquaImageFactory.SlicedImageControl;
+
 class EnemyTest {
+
+    boolean demoHeroDead = false;
+    boolean SlimeDead = false;
+
     @Test
     void attackTest() {
         int defaultHeroHp = 100;
-        Hero demoHero = new Hero("デモ勇者", defaultHeroHp, 100);
-        Enemy slime = new Enemy("スライムもどき", 10, 100);
-        int demoHero_hitPoint = demoHero.getHitPoint_Hero();
-        demoHero.attack(slime);
-        slime.attack(demoHero);
+        LivingThing demoHero = new Hero("デモ勇者", defaultHeroHp, 100);
+        LivingThing slime = new Enemy("スライムもどき", 10, 100);
+        int demoHero_hitPoint = demoHero.getHitPoint();
+        demoHeroDead = demoHero.attack(slime);
+        SlimeDead = slime.attack(demoHero);
         assertEquals(defaultHeroHp, demoHero_hitPoint);
     }
 }
